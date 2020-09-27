@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Saves/SaveFiles.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nome = ""
+level = 0
+recursos = {
+"Madeira": 0,
+"Metal": 0,
+"Pedra": 0,
+"Populacao": 0,
+"Popularidade": 70
+}
+construcoes = {
+"Fabrica": 0,
+"Madereira": 1,
+"Pedreira": 0
+}
+defesa = 0

@@ -7,6 +7,7 @@ export var recursos := {
 	"Madeira" : 0,
 	"Pedra" : 0,
 	"Metal" : 0, 
+	"Popularidade" : 70,
 	"Populacao" : 1}
 	
 export var construcoes:={
