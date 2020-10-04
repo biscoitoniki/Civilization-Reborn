@@ -1,15 +1,14 @@
 extends Resource
 
 class_name SaveFile
-export var nome := ""
-export var level := 0
+export var level := 1
 export var recursos := {
-	"Madeira" : 0,
+	"Madeira" : 100,
 	"Pedra" : 0,
 	"Metal" : 0, 
 	"Popularidade" : 70,
-	"Populacao" : 1}
-	
+	"Populacao" : 5}	
+
 export var construcoes:={
 	"Madereira" : 1,
 	"Pedreira" : 0,
@@ -17,3 +16,4 @@ export var construcoes:={
 }
 
 export var defesa := 0
+export var tickes := 5

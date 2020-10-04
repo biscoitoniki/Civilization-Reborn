@@ -4,13 +4,12 @@
 
 [resource]
 script = ExtResource( 1 )
-nome = ""
-level = 0
+level = 1
 recursos = {
-"Madeira": 0,
+"Madeira": 100,
 "Metal": 0,
 "Pedra": 0,
-"Populacao": 0,
+"Populacao": 5,
 "Popularidade": 70
 }
 construcoes = {
@@ -19,3 +18,4 @@ construcoes = {
 "Pedreira": 0
 }
 defesa = 0
+tickes = 5
