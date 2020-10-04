@@ -6,21 +6,17 @@ var prox_pedreira = {"Madeira" : 0, "Pedra" : 0}
 var prox_fabrica = {"Pedra" : 0, "Metal" : 0}
 var evento
 
-var a = randi()%10+1
-
 func _ready():
 	carregar_jogo()
 	start_reset_timer()
 	atribuir_valores()
 	calcular_valores()
-	#slot_load = SaveFile.new()
-	#ResourceSaver.save("res://Saves/save.tres", slot_load)
-	#pass
 
 func _physics_process(delta):
 	atribuir_valores()
 	up_level()
 	calcular_valores()
+	game_over()
 
 func _on_Madereira_pressed():
 	if (slot_load.recursos["Madeira"] >= prox_madereira):
@@ -46,7 +42,6 @@ func _on_Metaleira_pressed():
 func _on_Save_pressed():
 	salvar_jogo()
 
-
 func _on_Tickes_timeout():
 	var incrementar = 10
 	slot_load.recursos["Madeira"] += int(slot_load.construcoes["Madereira"] * 40)
@@ -61,7 +56,7 @@ func _on_Tickes_timeout():
 
 
 func _on_Automatic_save_timeout():
-	#ResourceSaver.save("res://Saves/save.tres", slot_load)
+	ResourceSaver.save("res://Saves/save.tres", slot_load)
 	$Automatic_save.set_wait_time(300)
 	$Automatic_save.start()
 
@@ -192,9 +187,10 @@ func salvar_jogo():
 	ResourceSaver.save("res://Saves/save.tres", slot_load)
 
 func game_over():
-	$backGameOver.visible = true
-	$gameOver.visible = true
-	$restart.visible = true
+	if(slot_load.recursos["Popularidade"] <= 0 or slot_load.recursos["Populacao"] <= 0):
+		$backGameOver.visible = true
+		$gameOver.visible = true
+		$restart.visible = true
 
 func start_reset_timer():
 	$Tickes.set_wait_time(slot_load.tickes)
