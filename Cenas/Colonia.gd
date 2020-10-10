@@ -252,17 +252,28 @@ func atribuir_valores():
 
 var lista_eventos = [
 	#Titulo do evento mais as 2 opções de escolha que ele pode fazer
-	{"Titulo" : "Você escura gritos de socorro do lado de fora da colônia", 
-		"Escolhas1" : "Você vai até o lado de fora conferir", 
-		"Escolhas2" : "Você ignora os gritos",
+	{"Titulo" : "Você escuta gritos de socorro do lado de fora da colônia", 
+		"Escolhas1" : "Averiguar barulho", 
+		"Escolhas2" : "Ignorar os gritos",
 		#Aqui e gerado um texto resposta que sera decidio caso a opão seja ruim ou boa
 		#Basta escrever umapara falso e uma para true com base na escolha, seguindo o exemplo
 		#Sendo uma resposta positiva e uma negativa para cada esolha
 		"Resposta1-1" : "Por sorte você encontra uma mulher e seu filho machucados mas ainda vivos",
-		"Resposta1-2" : "Você havia mandado seus homens ir verificar mas era uma armadilha e eles foram mortos",
+		"Resposta1-2" : "Você havia mandado seus homens irem verificar mas era uma armadilha e eles foram mortos",
 		"Resposta2-1" : "Você decide ignorar os gritos, no outro dia encontra rastros do que seria uma armadilha no local dos gritos",
 		"Resposta2-2" : "Você ignora os gritos e na manhã seguinte encontra corpos de uma mulher e seu filho"
-	}
+	},
+	{"Titulo" : "Membros da colônia querem averiguar uma mina de ouro", 
+		"Escolhas1" : "Permitir a partida dos membros", 
+		"Escolhas2" : "Negar partida",
+		#Aqui e gerado um texto resposta que sera decidio caso a opão seja ruim ou boa
+		#Basta escrever umapara falso e uma para true com base na escolha, seguindo o exemplo
+		#Sendo uma resposta positiva e uma negativa para cada esolha
+		"Resposta1-1" : "Por sorte você encontra uma mulher e seu filho machucados mas ainda vivos",
+		"Resposta1-2" : "Você havia mandado seus homens irem verificar mas era uma armadilha e eles foram mortos",
+		"Resposta2-1" : "Você decide ignorar os gritos, no outro dia encontra rastros do que seria uma armadilha no local dos gritos",
+		"Resposta2-2" : "Você ignora os gritos e na manhã seguinte encontra corpos de uma mulher e seu filho"
+	},
 #	{"Uma criança é pega roubando seus": 
 #		{"Escolhas" : {"Você vai até o lado de fora conferir": false, 
 #			"Você ignora os gritos" : false}
