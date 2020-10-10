@@ -48,9 +48,9 @@ func _on_Tickes_timeout():
 	slot_load.recursos["Pedra"] += int(slot_load.construcoes["Pedreira"] * 40)
 	slot_load.recursos["Metal"] += int(slot_load.construcoes["Fabrica"] * 40)
 	if  (int(slot_load.level/5) >= 1):
-		slot_load.recursos["Populacao"] += (0.4 * incrementar) / 2
+		slot_load.recursos["Populacao"] += 1
 	else:
-		slot_load.recursos["Populacao"] += 0.4
+		slot_load.recursos["Populacao"] += 2
 	start_reset_timer()
 		
 
@@ -105,6 +105,8 @@ func _on_eventTrigger_timeout():
 func _on_restart_pressed():
 	slot_load = SaveFile.new()
 	ResourceSaver.save("res://Saves/save.tres", slot_load)
+	$gameOver.visible = false
+	$restart.visible = false
 	get_tree().change_scene("res://Cenas/Colonia.tscn")
 
 func _on_continueEvent_pressed():
@@ -269,14 +271,31 @@ var lista_eventos = [
 		#Aqui e gerado um texto resposta que sera decidio caso a opão seja ruim ou boa
 		#Basta escrever umapara falso e uma para true com base na escolha, seguindo o exemplo
 		#Sendo uma resposta positiva e uma negativa para cada esolha
-		"Resposta1-1" : "Por sorte você encontra uma mulher e seu filho machucados mas ainda vivos",
-		"Resposta1-2" : "Você havia mandado seus homens irem verificar mas era uma armadilha e eles foram mortos",
-		"Resposta2-1" : "Você decide ignorar os gritos, no outro dia encontra rastros do que seria uma armadilha no local dos gritos",
-		"Resposta2-2" : "Você ignora os gritos e na manhã seguinte encontra corpos de uma mulher e seu filho"
+		"Resposta1-1" : "Seus homens encontraram recursos perdidos na mina.",
+		"Resposta1-2" : "A mina desabou e metade dos homens morreram",
+		"Resposta2-1" : "Ao amanhecer alguns homens de patrulha decobrem que a mina havia desabado",
+		"Resposta2-2" : "A colônia fica enfurecida por sua decisão"
 	},
-#	{"Uma criança é pega roubando seus": 
-#		{"Escolhas" : {"Você vai até o lado de fora conferir": false, 
-#			"Você ignora os gritos" : false}
-#			}
-#	},
+	{"Titulo" : "Uma mensagem de ataque foi enviada para você", 
+		"Escolhas1" : "Se preparar para o ataque", 
+		"Escolhas2" : "Sem tempo para isso",
+		#Aqui e gerado um texto resposta que sera decidio caso a opão seja ruim ou boa
+		#Basta escrever umapara falso e uma para true com base na escolha, seguindo o exemplo
+		#Sendo uma resposta positiva e uma negativa para cada esolha
+		"Resposta1-1" : "Com sua preparação um massacre foi evitado",
+		"Resposta1-2" : "A mensagem era falsa e você gasta recursos para nada",
+		"Resposta2-1" : "Se passam vários dias e nada aconteceu",
+		"Resposta2-2" : "Por falta de preparação sua colônia teve muitos prejuízos"
+	},
+	{"Titulo" : "Um ladrão foi capturado pelos civis", 
+		"Escolhas1" : "Poupar o ladrão", 
+		"Escolhas2" : "Mandá-lo para prisão",
+		#Aqui e gerado um texto resposta que sera decidio caso a opão seja ruim ou boa
+		#Basta escrever umapara falso e uma para true com base na escolha, seguindo o exemplo
+		#Sendo uma resposta positiva e uma negativa para cada esolha
+		"Resposta1-1" : "Você poupa ele e mais tarde descobre \n que ele tinha filhos a beira da morte",
+		"Resposta1-2" : "A população se revolta com sua benevolência e senso de justiça",
+		"Resposta2-1" : "A populaçãp o aplaude por fazer o certo e ser justo",
+		"Resposta2-2" : "Após 3 dias presos você encontra o homem morto \n o motivo a parente foi n ter chegado a tempo para salvar sua crianças da fome"
+	},
 ]

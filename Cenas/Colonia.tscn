@@ -331,7 +331,7 @@ position = Vector2( 16, 440 )
 position = Vector2( 1008, 440 )
 
 [node name="eventTrigger" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 30.0
 autostart = true
 
 [node name="backEvent" type="Sprite" parent="."]
