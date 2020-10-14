@@ -56,13 +56,14 @@ func _on_Tickes_timeout():
 
 
 func _on_Automatic_save_timeout():
-	ResourceSaver.save("res://Saves/save.tres", slot_load)
+	#ResourceSaver.save("res://Saves/save.tres", slot_load)
 	$Automatic_save.set_wait_time(300)
 	$Automatic_save.start()
 
 
 func _on_Button_pressed():
 	$Save.visible = not $Save.visible
+	$RestarButton.visible = not $RestarButton.visible
 
 func _on_eventTrigger_timeout():
 	

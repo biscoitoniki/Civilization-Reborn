@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Arte/Colonia/minerador-final.png" type="Texture" id=1]
 [ext_resource path="res://Arte/Colonia/metal.png" type="Texture" id=2]
@@ -32,29 +32,37 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 20
+size = 32
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 18
+size = 45
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 18
-font_data = ExtResource( 6 )
-
-[sub_resource type="DynamicFont" id=8]
 size = 20
 font_data = ExtResource( 6 )
 
+[sub_resource type="DynamicFont" id=8]
+size = 18
+font_data = ExtResource( 6 )
+
 [sub_resource type="DynamicFont" id=9]
+size = 18
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=10]
-size = 75
+size = 20
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 75
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=13]
 size = 38
 font_data = ExtResource( 6 )
 
@@ -306,14 +314,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="menuSave" type="Button" parent="."]
+margin_left = 960.0
+margin_top = 2.03463
+margin_right = 1024.0
+margin_bottom = 62.0346
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Save" type="Button" parent="."]
 visible = false
 margin_left = 168.0
 margin_top = 96.0
-margin_right = 424.0
-margin_bottom = 210.0
-rect_scale = Vector2( 2.71596, 2.24334 )
+margin_right = 769.0
+margin_bottom = 193.0
+rect_scale = Vector2( 1.14382, 1.40184 )
+custom_fonts/font = SubResource( 5 )
 text = "SAVE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestarButton" type="Button" parent="."]
+visible = false
+margin_left = 168.0
+margin_top = 280.0
+margin_right = 856.0
+margin_bottom = 416.0
+custom_fonts/font = SubResource( 6 )
+text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -347,7 +378,7 @@ margin_left = 192.0
 margin_top = 112.0
 margin_right = 832.0
 margin_bottom = 224.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "TEXT"
 align = 1
 valign = 1
@@ -361,7 +392,7 @@ margin_left = 320.0
 margin_top = 256.0
 margin_right = 704.0
 margin_bottom = 320.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -372,17 +403,7 @@ margin_left = 320.0
 margin_top = 384.0
 margin_right = 704.0
 margin_bottom = 450.0
-custom_fonts/font = SubResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="menuSave" type="Button" parent="."]
-margin_left = 960.0
-margin_top = 2.03463
-margin_right = 1024.0
-margin_bottom = 62.0346
-text = "X"
+custom_fonts/font = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -393,7 +414,7 @@ margin_left = 64.0
 margin_top = 272.0
 margin_right = 448.0
 margin_bottom = 336.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 align = 1
 valign = 1
 __meta__ = {
@@ -406,7 +427,7 @@ margin_left = 320.0
 margin_top = 450.0
 margin_right = 704.0
 margin_bottom = 514.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 11 )
 text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -424,7 +445,7 @@ margin_left = 328.0
 margin_top = 96.0
 margin_right = 760.0
 margin_bottom = 185.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 text = "Você Perdeu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -436,7 +457,7 @@ margin_left = 376.0
 margin_top = 376.0
 margin_right = 696.0
 margin_bottom = 444.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 13 )
 text = "RESTART"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -444,12 +465,12 @@ __meta__ = {
 [connection signal="pressed" from="Madereira" to="." method="_on_Madereira_pressed"]
 [connection signal="pressed" from="Pedreira" to="." method="_on_Pedreira_pressed"]
 [connection signal="pressed" from="Metaleira" to="." method="_on_Metaleira_pressed"]
+[connection signal="pressed" from="menuSave" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
 [connection signal="timeout" from="Tickes" to="." method="_on_Tickes_timeout"]
 [connection signal="timeout" from="Automatic_save" to="." method="_on_Automatic_save_timeout"]
 [connection signal="timeout" from="eventTrigger" to="." method="_on_eventTrigger_timeout"]
 [connection signal="pressed" from="escolhaEsquerda" to="." method="_on_escolhaEsquerda_pressed"]
 [connection signal="pressed" from="escolhaDireita" to="." method="_on_escolhaDireita_pressed"]
-[connection signal="pressed" from="menuSave" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="continueEvent" to="." method="_on_continueEvent_pressed"]
 [connection signal="pressed" from="restart" to="." method="_on_restart_pressed"]
