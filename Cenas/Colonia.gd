@@ -7,6 +7,8 @@ var prox_fabrica = {"Pedra" : 0, "Metal" : 0}
 var evento
 
 func _ready():
+	#slot_load = SaveFile.new()
+	#ResourceSaver.save("res://Saves/save.tres", slot_load)
 	carregar_jogo()
 	start_reset_timer()
 	atribuir_valores()
@@ -42,6 +44,16 @@ func _on_Metaleira_pressed():
 func _on_Save_pressed():
 	salvar_jogo()
 
+func _on_RestarButton_pressed():
+	var dir = Directory.new()
+	dir.remove("res://Saves/save.tres")
+	slot_load = SaveFile.new()
+	ResourceSaver.save("res://Saves/save.tres", slot_load)
+	#slot_load = preload("res://Saves/save.tres")
+	reset_slot()
+	$RestarButton.visible = false
+	get_tree().reload_current_scene()
+
 func _on_Tickes_timeout():
 	var incrementar = 10
 	slot_load.recursos["Madeira"] += int(slot_load.construcoes["Madereira"] * 40)
@@ -54,9 +66,8 @@ func _on_Tickes_timeout():
 	start_reset_timer()
 		
 
-
 func _on_Automatic_save_timeout():
-	#ResourceSaver.save("res://Saves/save.tres", slot_load)
+	ResourceSaver.save("res://Saves/save.tres", slot_load)
 	$Automatic_save.set_wait_time(300)
 	$Automatic_save.start()
 
@@ -104,11 +115,15 @@ func _on_eventTrigger_timeout():
 		[tipo, not tipo], 7, 10]
 	
 func _on_restart_pressed():
+	var dir = Directory.new()
+	dir.remove("res://Saves/save.tres")
 	slot_load = SaveFile.new()
 	ResourceSaver.save("res://Saves/save.tres", slot_load)
+	#slot_load = preload("res://Saves/save.tres")
+	reset_slot()
 	$gameOver.visible = false
 	$restart.visible = false
-	get_tree().change_scene("res://Cenas/Colonia.tscn")
+	get_tree().reload_current_scene()
 
 func _on_continueEvent_pressed():
 	$respostaEvent.visible = false
@@ -234,10 +249,25 @@ func up_level():
 		$defesaEsquerda.set_texture(preload("res://Arte/Defesas/defesaMetal.png"))
 		$defesaDireita.set_texture(preload("res://Arte/Defesas/defesaMetal.png"))
 	
+
+func reset_slot():
+	slot_load.level = 1
+	slot_load.recursos = {
+	"Madeira" : 100,
+	"Pedra" : 0,
+	"Metal" : 0, 
+	"Popularidade" : 70,
+	"Populacao" : 5}
 	
+	slot_load.construcoes = {
+	"Madereira" : 1,
+	"Pedreira" : 0,
+	"Fabrica" : 0}
+	
+	slot_load.defesa = 0
+	slot_load.tickes = 5
 
 func atribuir_valores():
-	#var slot_load = preload("res://Saves/save.res")
 	$contFabrica.text = str(slot_load.construcoes["Fabrica"])
 	$contMadereira.text = str(slot_load.construcoes["Madereira"])
 	$contPedreira.text = str(slot_load.construcoes["Pedreira"])
@@ -298,5 +328,16 @@ var lista_eventos = [
 		"Resposta1-2" : "A população se revolta com sua benevolência e senso de justiça",
 		"Resposta2-1" : "A populaçãp o aplaude por fazer o certo e ser justo",
 		"Resposta2-2" : "Após 3 dias presos você encontra o homem morto \n o motivo a parente foi n ter chegado a tempo para salvar sua crianças da fome"
+	},
+	{"Titulo" : "Um estraho chega a colônia e é barrado de entrar", 
+		"Escolhas1" : "Permitir Entrada", 
+		"Escolhas2" : "Negar Entrada",
+		#Aqui e gerado um texto resposta que sera decidio caso a opão seja ruim ou boa
+		#Basta escrever umapara falso e uma para true com base na escolha, seguindo o exemplo
+		#Sendo uma resposta positiva e uma negativa para cada esolha
+		"Resposta1-1" : "O estranho se revela um mercador \n e em troca de sua entrada ele entrega algumas mecadorias",
+		"Resposta1-2" : "Após algumas horas o estranho foi visto fugindo com mercadorias roubadas",
+		"Resposta2-1" : "Enfurecido ele tenta atacar um dos guardas mas é contido \n na verdade ele era ladrão tentando se infiltrar",
+		"Resposta2-2" : "Ele se revela ser um mercador e vai embira com suas mercadorias"
 	},
 ]

@@ -467,6 +467,7 @@ __meta__ = {
 [connection signal="pressed" from="Metaleira" to="." method="_on_Metaleira_pressed"]
 [connection signal="pressed" from="menuSave" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="RestarButton" to="." method="_on_RestarButton_pressed"]
 [connection signal="timeout" from="Tickes" to="." method="_on_Tickes_timeout"]
 [connection signal="timeout" from="Automatic_save" to="." method="_on_Automatic_save_timeout"]
 [connection signal="timeout" from="eventTrigger" to="." method="_on_eventTrigger_timeout"]
